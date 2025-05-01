@@ -41,6 +41,7 @@ def buildApplescript(termin):
     uhrzeit_bis = termin.get("bis")
     dauer = termin.get("dauer")
     ort = termin.get("ort", "")
+    beschreibung = termin.get("beschreibung", "")
 
     start_datetime = datetime.strptime(f"{datum} {uhrzeit_von}", "%Y-%m-%d %H:%M")
 
@@ -59,11 +60,12 @@ def buildApplescript(termin):
         f'tell application "Calendar" to '
         f'tell calendar "{kalender}" to '
         f'make new event with properties {{summary:"{titel}", location:"{ort}", '
+        f'description:"{beschreibung}", '
         f'start date:date "{dateStart}", end date:date "{dareEnd}"}}'
     )
 
     # oder in einer Zeile:
-    # applescript = f'''tell application "Calendar" to tell calendar "{kalender}" to make new event with properties {{summary:"{titel}", location:"{ort}", start date:date "{dateStart}", end date:date "{dareEnd}"}}'''
+    # applescript = f'''tell application "Calendar" to tell calendar "{kalender}" to make new event with properties {{summary:"{titel}", location:"{ort}", description:"{beschreibung}", start date:date "{dateStart}", end date:date "{dareEnd}"}}'''
 
     return applescript
 
