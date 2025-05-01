@@ -6,6 +6,7 @@ Ein kleines macOS-Tool, um Termine aus einer Textdatei automatisch in den Kalend
 
 - Termine in natürlicher Textform definieren
 - Unterstützt `Datum`, `DatumBis`, `Von`, `Bis`, `Dauer`, `Ort`, `Kalender`, `Titel`, `Beschreibung`
+- Dauer in Minuten
 - Automatischer Fallback, falls `Bis` oder `DatumBis` fehlen
 - Unterstützt Kommentare (Zeilen mit `#`)
 - Läuft mit AppleScript (nur macOS)
