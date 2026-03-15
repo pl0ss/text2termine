@@ -33,8 +33,8 @@ def parseTermine(dateipfad):
     return termine
 
 def buildApplescript(termin):
-    kalender = termin.get("kalender", "Privat")
-    titel = termin.get("titel", "Ohne Titel")
+    kalender = termin.get("kalender")
+    titel = termin.get("titel")
     datum = termin.get("datum")
     datumbis = termin.get("datumbis") or datum
     uhrzeit_von = termin.get("von")
@@ -42,6 +42,12 @@ def buildApplescript(termin):
     dauer = termin.get("dauer")
     ort = termin.get("ort", "")
     beschreibung = termin.get("beschreibung", "")
+    
+    if not titel:
+        raise ValueError(f"Termin '{datum}' hat keinen Titel.")
+    
+    if not kalender:
+        raise ValueError(f"Termin '{titel}' hat keinen Kalender.")
 
     if not datum:
         raise ValueError(f"Termin '{titel}' hat kein Datum.")
